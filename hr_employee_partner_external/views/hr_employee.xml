@@ -18,4 +18,53 @@
             </xpath>
         </field>
     </record>
+
+    <!-- Add a filter for external employees. -->
+    <record id="view_employee_filter" model="ir.ui.view">
+        <field name="name">hr.employee.search</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='message_needaction']" position="before">
+                <filter string="Internal Employees" name="internal" domain="[('is_external', '=', False)]" />
+                <seperator />
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Make external users appear grey in tree view. -->
+    <record id="view_employee_tree" model="ir.ui.view">
+        <field name="name">hr.employee.tree</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <field name="is_external" invisible="1" />
+            </xpath>
+            <xpath expr="//tree" position="attributes">
+                <attribute name="decoration-muted">is_external == True</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Make external users appear grey in kanban view. -->
+    <record id="hr_kanban_view_employees" model="ir.ui.view">
+        <field name="name">hr.employee.kanban</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees" />
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="inside">
+                <field name="is_external" invisible="1" />
+            </xpath>
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="decoration-muted">is_external == True</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Hide external users by default -->
+    <function model="ir.actions.act_window" name="write">
+        <value eval="[ref('hr.open_view_employee_list_my')]"/>
+        <value model="ir.actions.act_window" eval="{'context':  '{\'search_default_internal\':1}'}"/>
+    </function>
 </odoo>
