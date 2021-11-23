@@ -27,7 +27,7 @@
         <field name="arch" type="xml">
             <xpath expr="//filter[@name='message_needaction']" position="before">
                 <filter string="Internal Employees" name="internal" domain="[('is_external', '=', False)]" />
-                <seperator />
+                <separator />
             </xpath>
         </field>
     </record>
