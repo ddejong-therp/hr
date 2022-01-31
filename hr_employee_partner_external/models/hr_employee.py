@@ -9,14 +9,16 @@ class EmployeePartner(models.Model):
     Add administrative Partner reference to Employee
     """
 
-    _inherit = 'hr.employee'
+    _inherit = "hr.employee"
 
     # set employee as external
-    is_external = fields.Boolean('Is an external Employee', default=False,
-        groups="hr.group_hr_user")
+    is_external = fields.Boolean(
+        "Is an external Employee", default=False, groups="hr.group_hr_user",
+    )
     # Partner reference
     hr_external_partner_id = fields.Many2one(
-        'res.partner',
-        'External Partner',
-        help='Partner that administrate Employee that works in the Company',
-        groups="hr.group_hr_user")
+        "res.partner",
+        "External Partner",
+        groups="hr.group_hr_user",
+        help="Partner that administrate Employee that works in the Company",
+    )
