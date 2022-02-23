@@ -3,13 +3,13 @@
 
 {
     "name": "HR Employee First Name, Last Name",
-    "version": "13.0.2.0.0",
+    "version": "13.0.2.1.0",
     "author": "Savoir-faire Linux, "
     "Fekete Mihai (Forest and Biomass Services Romania), "
     "Onestein, "
     "Odoo Community Association (OCA)",
     "maintainer": "Savoir-faire Linux",
-    "website": "https://github.com/OCA/hr/",
+    "website": "https://github.com/OCA/hr",
     "license": "AGPL-3",
     "category": "Human Resources",
     "summary": "Adds First Name to Employee",
